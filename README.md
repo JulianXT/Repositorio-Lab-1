@@ -25,22 +25,7 @@ Detecta si un puesto de parqueo está ocupado o disponible utilizando técnicas 
 - `yellow_car.jfif`
 
 Estas imágenes se utilizan como entrada para los programas desarrollados.
-
 ---
-
-## 💻 Ejecución de los programas
-Todos los programas están escritos en Python y hacen uso de la biblioteca OpenCV. Para ejecutar correctamente cada script, es necesario tener instalada la librería ejecutando:
-
-```bash
-python -m pip install opencv-contrib-python
-```
-
-También se recomienda verificar que `pip` esté actualizado:
-
-```bash
-python -m pip install --upgrade pip
----
-
 ## 👤 Autores
 **Julian Trujillo**  
 **Nicol Garcia**  
