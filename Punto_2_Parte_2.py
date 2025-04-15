@@ -2,60 +2,53 @@ import cv2
 import numpy as np
 
 def identifyColor(image_number):
-    # Definir rutas absolutas para las imágenes
+    # Rutas
     if image_number == 1:
-        image_path = r"C:\Users\Santiago\Desktop\blue_car.jfif"
+        image_path = r"C:\Users\nicol\OneDrive\Documentos\red_car.jfif"
     elif image_number == 2:
-        image_path = r"C:\Users\Santiago\Desktop\red_car.jfif"
+        image_path = r"C:\Users\nicol\OneDrive\Documentos\yellow_car.jfif"
     elif image_number == 3:
-        image_path = r"C:\Users\Santiago\Desktop\yellow_car.jfif"
+        image_path = r"C:\Users\nicol\OneDrive\Documentos\blue_car.jfif"
     else:
         print("Error: Número no válido. Debe ser 1, 2 o 3.")
         return
 
-    # Cargar la imagen
+    # Leer imagen
     img = cv2.imread(image_path, cv2.IMREAD_COLOR)
-
-    # Verificar si la imagen se cargó correctamente
     if img is None:
         print(f"Error: No se pudo cargar la imagen en la ruta: {image_path}")
         return
-    
-    # Obtener los valores de los tres canales de color
-    bluePlane = img[:, :, 0]
-    greenPlane = img[:, :, 1]
-    redPlane = img[:, :, 2]
 
-    # Calcular el promedio de cada canal
-    promedio_r = np.mean(redPlane)
-    promedio_g = np.mean(greenPlane)
-    promedio_b = np.mean(bluePlane)
+    # Promedios
+    blue = np.mean(img[:, :, 0])
+    green = np.mean(img[:, :, 1])
+    red = np.mean(img[:, :, 2])
 
-    print(f"Blue: {promedio_b}, Green: {promedio_g}, Red: {promedio_r}")
+    print(f"Promedios - Rojo: {red:.2f}, Verde: {green:.2f}, Azul: {blue:.2f}")
 
-    # Identificación del color
-    if promedio_r > 100 and promedio_g > 100 and promedio_b > 100:
-        print("El color predominante es amarillo")
-    elif promedio_r > 100 and promedio_g < 100 and promedio_b < 100:
-        print("El color predominante es rojo")
-    elif promedio_b > 100 and promedio_r < 100 and promedio_g < 100:
-        print("El color predominante es azul")
+    # Detección de color con lógica afinada
+    if red > 100 and green > 100 and abs(red - green) < 15 and blue < red and blue < green:
+        print("El color predominante es AMARILLO")
+    elif red > blue and red > green:
+        print("El color predominante es ROJO")
+    elif blue > red and blue > green:
+        print("El color predominante es AZUL")
     else:
-        print("No se pudo identificar un color predominante")
+        print("No se pudo identificar el color como rojo, azul o amarillo")
 
-# Mostrar opciones al usuario
+# Menú
 print("Seleccione la imagen a analizar:")
-print("1 - blue_car.jfif")
-print("2 - red_car.jfif")
-print("3 - yellow_car.jfif")
+print("1 - red_car.jfif")
+print("2 - yellow_car.jfif")
+print("3 - blue_car.jfif")
 
-# Pedir al usuario que seleccione una opción
+# Ejecutar
 try:
     image_number = int(input("Ingrese el número de la imagen (1, 2 o 3): "))
     identifyColor(image_number)
 except ValueError:
-    print("Error: Debe ingresar un número válido (1, 2 o 3).")
-    
+    print("Error: Debe ingresar un número válido (1, 2 o 3).")
+        
 #Julian Trujillo
 #Nicol Garcia
 #Carlos Sanchez
