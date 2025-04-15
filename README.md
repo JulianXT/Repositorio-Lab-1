@@ -1,6 +1,4 @@
 # 🧪 Laboratorio 1 - Uso de OpenCV con Python  
-**Programación – I-2025 – GDSPROC – Universidad del Quindío**  
-**Docente:** Alexander López-Parrado, PhD.  
 **Estudiantes:** Julian Trujillo, Nicol Garcia, Vivian Montoya, Carlos Sanchez
 
 ---
